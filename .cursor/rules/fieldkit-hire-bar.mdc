@@ -1,0 +1,21 @@
+---
+description: Fieldkit is a strong-mid product, not a tutorial. Enforce AGENTS.md hire bar.
+alwaysApply: true
+---
+
+# Fieldkit hire bar
+
+Read and obey `/AGENTS.md` in this repo before writing code.
+
+This is a **product**, not a starter tutorial or a ServiceTitan clone.
+
+**Required (do not defer):** RLS + isolation tests, job lock, scoring, auto-assign
+policy, exception queue, `pct_auto_assigned` in dbt, domain events to
+Redpanda/Kafka, Dagster incremental load, SLA metrics as code, Terraform on Azure,
+AI clerk only (draft job + get_metric). The LLM never assigns a technician.
+No `run_sql`.
+
+**Teach first**, then the smallest slice. Do not dump a finished app.
+Do not say “we will add dbt/RLS/events later.” Those are the product.
+
+If a change would make the resume sentence in AGENTS.md false, do not ship it.
