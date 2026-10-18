@@ -247,6 +247,13 @@ invent it.
   says a person will confirm the time. A thin sample must not become a promise.
 - A person sends the message, or a written policy sends it when the sample is
   large enough and the job is not VIP or emergency.
+- **Performance history is the finished jobs, not a running total.** Each job
+  stores `started_at` and `completed_at`. A `job_work_log` row records what
+  was found and which part was replaced. dbt computes, per tenant and per
+  technician, jobs completed, median minutes (`completed_at` minus
+  `started_at`), and on-time rate. The dashboard reads those models. No column
+  on `technicians` stores a score that the API updates. The assistant may read
+  the figures with `get_metric` and describe them. It does not calculate them.
 
 **RAG, named as RAG**
 

@@ -40,7 +40,7 @@ def test_tenant_isolation(seed_jobs):
         with conn.cursor() as cur:
             #ACT AS TENAT A
             cur.execute("SELECT set_config('app.tenant_id', %s , true)", (str(jobs["tenant_a"]),))
-            ids_as_a=_visible_job_ids(conn)
+            ids_as_a(conn)
             assert ids_as_a=={jobs["job_a"]}
             #ACT AS TENAT B
             cur.execute("SELECT set_config('app.tenant_id', %s , true)", (str(jobs["tenant_b"]),))
