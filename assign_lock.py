@@ -13,9 +13,11 @@ def lock_key(job_id: str) -> str:
 def try_acquire(client, job_id: str, token: str, ttl_seconds: int = 30) -> bool:
     """Take the lock only if no one else holds it. The key dies after ttl_seconds."""
     return client.set(lock_key(job_id), token, nx=True, ex=ttl_seconds) is True
-
+#nx is set only if the key does not exist
 
 def release(client, job_id: str, token: str) -> bool:
     """Delete the lock only if this token still owns it."""
     removed = client.eval(RELEASE, 1, lock_key(job_id), token)
     return removed == 1
+
+# release only if the token still owns the lock else we have ttl=30sec in emergeny
