@@ -92,11 +92,11 @@ def score_job(
         else:
             reasons["distance"] = 0
 
-        reasons["load"]=open_job_count * t.open_job_count
+        reasons["load"]=LOAD_PENALTY_PER_JOB * t.open_job_count
 
         hours_till_sla=(job.sla_due_at - now).total_seconds() / 3600
 
-        if hours < SLA_URGENT_HOURS:
+        if hours_till_sla < SLA_URGENT_HOURS:
             reasons["sla"] = SLA_URGENT_POINTS
         else:
             reasons["sla"] = 0

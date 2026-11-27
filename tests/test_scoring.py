@@ -88,5 +88,5 @@ def test_score():
     assert results[0].reasons["shift"] == 20
     assert results[0].reasons["part"] == 20
     assert results[0].reasons["distance"] == 20
-    assert results[0].reasons["sla"] == 10
+    assert results[0].reasons["sla"] == 0
 
